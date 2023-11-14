@@ -12,4 +12,3 @@ CREATE TABLE SECTORES(
     clave VARCHAR(255) NOT NULL,
   
 );
-INSERT INTO `usuarios` (`nombre`, `apellido1`, `apellido2`, `fechanacimiento`) VALUES ('root', 'root', 'root', '2022-03-01');
