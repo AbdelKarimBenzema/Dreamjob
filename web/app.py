@@ -6,11 +6,11 @@ from flask import Flask
 from variables import cargarvariables
 
 #Crea un objeto de la clase Flask
-#app = Flask(__name__,
-#            static_url_path='',
-#            static_folder='static',
-#            template_folder='template')
-app = Flask(__name__)
+app = Flask(__name__,
+            static_url_path='',
+            static_folder='static',
+            template_folder='template')
+#app = Flask(__name__)
 
 #Añade configuración al servidor web
 app.config.from_pyfile('settings.py')
