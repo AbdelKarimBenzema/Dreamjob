@@ -83,7 +83,7 @@
         </div>
         <div class="navbar-menu">
             <div class="navbar-start">
-                <a class="navbar-item" href="/static/juegos">Juegos</a>
+                <a class="navbar-item" href="/static/juegos">Ofertas de trabajo</a>
             </div>
             <div class="navbar-end">
                 <div class="navbar-item">
@@ -94,15 +94,17 @@
   <section class="section">
     <div class="columns">
         <div class="column">
-            <h3 class="is-size-3">Editar juego</h3>
-                <label for="nombre">Nombre:</label>
-                <input required type="text" class="input" placeholder="Nombre" name="nombre" id="nombre">
-                <label for="descripcion">Descripción</label>
-                <input required type="text" class="input" placeholder="Descripción" name="descripcion" id="descripcion">
-                <label for="precio">Precio</label>
-                <input required type="number" class="input" placeholder="Precio" name="precio" id="precio">
-                <label for="foto">Foto</label>
-                <input required type="text" class="input" placeholder="Foto" name="foto" id="foto">
+            <h3 class="is-size-3">Editar datos personales</h3>
+            <label for="nombre">Nombre:</label>
+            <input required type="text" class="input" placeholder="Nombre" name="nombre" id="nombre">
+            <label for="nombre">Primer apellido:</label>
+            <input required type="text" class="input" placeholder="Apellido1" name="apellido1" id="apellido1">
+            <label for="nombre">Segundo apellido (Opcional):</label>
+            <input required type="text" class="input" placeholder="Apellido2" name="apellido2" id="apellido2">
+            <label for="descripcion">Fecha de nacimiento</label>
+            <input required type="date" class="input" placeholder="Descripción" name="descripcion" id="descripcion">
+            <label for="curriculum">Curriculum (opcional)</label>
+            <input required type="text" class="input" placeholder="Curriculum" name="Curriculum" id="Curriculum">
                 <button type="button" onclick="guardar()" class="button is-success mt-2">Guardar</button>
                 <a href="/static/juego.html" class="button is-primary mt-2">Volver</a>
             </form>
