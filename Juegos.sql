@@ -10,6 +10,8 @@ CREATE TABLE usuarios(
 CREATE TABLE SECTORES(
 	usuario VARCHAR(100) NOT NULL PRIMARY KEY,
     clave VARCHAR(255) NOT NULL,
+    perfil VARCHAR(100) NOT NULL,
+    fechaUltimoAcceso DATE
 );
 
 INSERT INTO `usuarios` (`nombre`, `apellido1`, `apellido2`, `fechanacimiento`) VALUES ('root', 'root', 'root', '2022-03-01');
