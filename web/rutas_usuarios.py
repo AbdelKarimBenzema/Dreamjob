@@ -2,7 +2,7 @@ from flask import request, session
 import json
 import decimal
 from __main__ import app
-import web.controlador_usuarios as controlador_usuarios
+import controlador_usuarios
 
 class Encoder(json.JSONEncoder):
     def default(self, obj):
