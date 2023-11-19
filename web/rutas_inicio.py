@@ -16,7 +16,7 @@ def login():
             conexion = obtener_conexion()
             with conexion.cursor() as cursor:
                  #cursor.execute("SELECT perfil FROM usuarios WHERE usuario = %s and clave= %s",(username,password))
-                 cursor.execute("SELECT perfil FROM usuarios WHERE usuario = '" + username +"' and clave= '" + password + "'")
+                 cursor.execute("SELECT perfil FROM SECTORES WHERE usuario = '" + username +"' and clave= '" + password + "'")
                  usuario = cursor.fetchone()
             conexion.close()
             if usuario is None:
@@ -47,11 +47,11 @@ def registro():
             conexion = obtener_conexion()
             with conexion.cursor() as cursor:
                  #cursor.execute("SELECT perfil FROM usuarios WHERE usuario = %s and clave= %s",(username,password))
-                 cursor.execute("SELECT perfil FROM usuarios WHERE usuario = '" + username +"' and clave= '" + password + "'")
+                 cursor.execute("SELECT perfil FROM SECTORES WHERE usuario = '" + username +"' and clave= '" + password + "'")
                  usuario = cursor.fetchone()
                  if usuario is None:
-                     print("INSERT INTO usuarios(usuario,clave,perfil) VALUES('"+ username +"','"+  password+"','"+ perfil+"')") 
-                     cursor.execute("INSERT INTO usuarios(usuario,clave,perfil) VALUES('"+ username +"','"+  password+"','"+ perfil+"')")
+                     print("INSERT INTO SECTORES(usuario,clave,perfil) VALUES('"+ username +"','"+  password+"','"+ perfil+"')") 
+                     cursor.execute("INSERT INTO SECTORES(usuario,clave,perfil) VALUES('"+ username +"','"+  password+"','"+ perfil+"')")
                      if cursor.rowcount == 1:
                          conexion.commit()
                          ret={"status": "OK" }
