@@ -15,7 +15,7 @@ app = Flask(__name__,
 #Añade configuración al servidor web
 app.config.from_pyfile('settings.py')
 #metodo del archivo cargarVariables
-cargarvariables()
+#cargarvariables()
 
 #Carga archivos
 import rutas_inicio
