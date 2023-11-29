@@ -37,5 +37,6 @@ apache:
   image: httpd:latest
   volume:
     - /web/static:/usr/local/apache2/htdocs/ 
+    - ./apache.conf:/usr/local/apache2/conf/httpd.conf
    
 
