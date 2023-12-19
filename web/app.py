@@ -1,6 +1,6 @@
 import os
 from flask import Flask
-from variables import cargarvariables
+#from variables import cargarvariables
 
 app = Flask(__name__,
             static_url_path='',
@@ -9,7 +9,7 @@ app = Flask(__name__,
 #app = Flask(__name__)
 
 app.config.from_pyfile('settings.py')
-cargarvariables()
+#cargarvariables()
   
 import rutas_inicio
 
