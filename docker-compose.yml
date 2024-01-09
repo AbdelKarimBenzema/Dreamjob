@@ -13,6 +13,7 @@ services:
       - ./mariadb_data:/var/lib/mysql
     ports:
       - 3306:3306
+
   phpmyadmin:
     image: phpmyadmin
     container_name: phpmyadmin
@@ -23,20 +24,31 @@ services:
       - 9093:80
     depends_on:
       - mariadb
- python:
-   image: python:latest
-   environment:
+  apache:
+    build: ./apache
+    container_name: apache
+    volumes:
+      - ./web/static:/var/www/html
+    ports:
+      - "7777:80"
+    restart: unless-stopped
+    depends_on:
+      - mariadb
+  
+  python:
+    build: .
+    container_name: python
+    restart: always
+    environment:
       - DB_USERNAME=root
       - DB_PASSWORD=example
       - DB_DATABASE=DREAM
-      - DB_HOST=localhost
-      - DB_PORT=3306
+      - DB_HOST=mariadb
+      - DB_PORT= 3306
       - PORT=8080
       - HOST=0.0.0.0
-apache:
-  image: httpd:latest
-  volume:
-    - /web/static:/usr/local/apache2/htdocs/ 
-    - ./apache.conf:/usr/local/apache2/conf/httpd.conf
-   
-
+    ports:
+      - 8080:8080
+    depends_on:
+      - mariadb
+#    command: copy ./static ./mariadb
