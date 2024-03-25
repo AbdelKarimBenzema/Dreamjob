@@ -1,0 +1,1 @@
+DEBUG=True #Poner a false en produccion

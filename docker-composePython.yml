@@ -1,0 +1,50 @@
+version: '3'
+services:
+  mariadb:
+    image: mariadb
+    container_name: mariadb
+    userns_mode: hosts
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: example
+      MARIADB_USER: agente
+      MARIADB_USER_PASSWORD: 0traClave
+      MARIADB_DATABASE: DREAM
+    volumes:
+      - ./mariadb_data:/var/lib/mysql
+      - ./DreamJob.sql:/docker-entrypoint-initdb.d/dreamjob.sql
+    ports:
+      - 3306:3306
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: phpmyadmin
+    restart: always
+    environment:
+      - PMA_HOST=mariadb
+    ports:
+      - 9093:80
+    depends_on:
+      - mariadb
+  apache:
+    build: apache
+    ports:
+      - "7777:80"
+    restart: unless-stopped
+    depends_on:
+      - python
+      - mariadb
+  python:
+    build: .
+    container_name: python
+    environment:
+      DB_USERNAME: root
+      DB_PASSWORD: example
+      DB_DATABASE: DREAM
+      DB_HOST: mariadb
+      DB_PORT: 3306
+      PORT: 8080
+      HOST: "0.0.0.0"
+    volumes: 
+      - ./web:/app
+    depends_on:
+      - mariadb

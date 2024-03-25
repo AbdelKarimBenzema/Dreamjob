@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index.css">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <title>APP PEPS</title>
+    <style>
+        .error{
+            display: none;
+            color: red;
+        }
+    </style>
+    <script>
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+
+        function conectar(){
+            document.getElementsByClassName("error")[0].style.display="none";
+            var raw = JSON.stringify({
+                "username": document.getElementById("username").value,
+                "password": document.getElementById("password").value
+            });
+
+            var requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: raw
+            };
+
+            fetch("/api/login", requestOptions)
+                .then(response => response.json())
+                .then(result => {
+                    if (result.status=="OK"){
+                        location.href="skills.html";
+                    } else {
+                        document.getElementsByClassName("error")[0].style.display="block";
+                    }
+                })
+                .catch(error => console.log('error', error)); 
+        }
+    </script>
+</head>
+<body>
+    <div class="main">
+        <p class="sign" align="center">Iniciar sesión</p>
+        <div class="form1">
+            <input class="un " type="text" align="center" placeholder="Username" name="username" id="username"><br>
+            <input class="pass" type="password" align="center" placeholder="Password" name="password" id="password"><br>
+            <label class="error">Usuario/clave erronea</label>
+            <button class="submit" type="button" onclick="conectar()">Iniciar sesión</button>
+            <span class="forgot" align="center" onclick="location.href='registro.html'">Registrarse</span>
+        </div>
+    </div>
+</body>
+</html>
